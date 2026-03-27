@@ -4,286 +4,254 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Psic. Daniel Machuca | Terapia Cognitivo Conductual</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #2c3e50;
-            --accent: #5dade2;
-            --text: #333;
-            --light-bg: #f4f7f6;
+            --secondary: #34495e;
+            --accent: #27ae60; /* Verde WhatsApp profesional */
+            --bg-light: #f8f9fa;
+            --text-dark: #333;
+            --text-light: #666;
             --white: #ffffff;
-            --whatsapp: #25d366;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--text);
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
+            color: var(--text-dark);
             background-color: var(--white);
         }
 
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary);
-        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
-        /* --- Navegación --- */
-        nav {
-            padding: 20px 5%;
+        /* Header */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255,255,255,0.95);
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            backdrop-filter: blur(5px);
         }
 
-        .logo {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+        .logo { font-weight: 700; font-size: 1.2rem; color: var(--primary); }
 
-        /* --- Hero Section --- */
+        /* Hero Section */
         .hero {
-            height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 80px 0;
             text-align: center;
-            background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)), 
-                        url('https://natsvein1.github.io/cm/images/image5.png'); /* Imagen de fondo profesional */
-            background-size: cover;
-            background-position: center;
-            padding: 0 20px;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
         }
 
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            line-height: 1.2;
         }
 
-        .hero-content p {
+        .hero p {
             font-size: 1.2rem;
-            margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 30px;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 15px 35px;
-            background-color: var(--primary);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            background-color: var(--accent);
-        }
-
+        /* Botón Principal */
         .btn-whatsapp {
-            background-color: var(--whatsapp);
-            margin-top: 10px;
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
         }
 
-        /* --- Secciones Generales --- */
-        section {
-            padding: 80px 10%;
+        .btn-whatsapp:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
         }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
+        /* Sección Enfoque (Tarjetas) */
+        .focus-section { padding: 80px 0; background-color: var(--white); }
+        
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
+        .section-title p { max-width: 800px; margin: 0 auto; font-size: 1.1rem; color: var(--text-light); }
 
-        .section-title h2 {
-            font-size: 2.5rem;
-        }
-
-        /* --- Tarjetas de Precio --- */
-        .pricing-container {
+        .benefits-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .benefit-card {
+            background: var(--bg-light);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .benefit-card:hover {
+            background: var(--white);
+            border-color: #eee;
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .benefit-card .icon { font-size: 3rem; margin-bottom: 20px; display: block; }
+        .benefit-card h3 { margin-bottom: 15px; font-size: 1.25rem; color: var(--primary); }
+        .benefit-card p { font-size: 0.95rem; color: var(--text-light); }
+
+        /* Precios */
+        .pricing { padding: 80px 0; background-color: var(--bg-light); text-align: center; }
+        
+        .pricing-cards {
+            display: flex;
+            justify-content: center;
             gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 40px;
         }
 
         .price-card {
-            background: var(--light-bg);
+            background: var(--white);
             padding: 40px;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s;
+            border-radius: 20px;
+            width: 300px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            border: 1px solid #eee;
         }
 
-        .price-card:hover {
-            transform: scale(1.05);
+        .price-card.featured { border: 2px solid var(--accent); position: relative; }
+        .featured-tag { 
+            position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+            background: var(--accent); color: white; padding: 4px 15px; 
+            border-radius: 20px; font-size: 0.8rem; font-weight: 700;
         }
 
-        .price-card h3 {
-            margin-bottom: 20px;
-        }
+        .price { font-size: 2.5rem; font-weight: 700; margin: 20px 0; color: var(--primary); }
+        .price span { font-size: 1rem; color: var(--text-light); }
 
-        .price-value {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 10px;
-        }
+        /* Footer */
+        footer { padding: 40px 0; text-align: center; border-top: 1px solid #eee; color: var(--text-light); font-size: 0.9rem; }
 
-        /* --- Enfoque / About --- */
-        .about-grid {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-            flex-wrap: wrap;
-        }
-
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .about-text p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-        }
-
-        /* --- Contacto / Mapa --- */
-        .contact-info {
-            background: var(--primary);
-            color: var(--white);
-            border-radius: 15px;
-            padding: 40px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .info-item i {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: var(--accent);
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            font-size: 0.9rem;
-            color: #888;
-        }
-
-        /* --- Responsivo --- */
+        /* Responsive */
         @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2.5rem; }
-            section { padding: 60px 5%; }
+            .hero h1 { font-size: 2rem; }
+            .pricing-cards { flex-direction: column; align-items: center; }
+            .price-card { width: 100%; max-width: 320px; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">Psicólogo Daniel Machuca</div>
-        <div>
-            <a href="#contacto" class="btn" style="padding: 10px 20px; font-size: 0.8rem;">Agendar</a>
-        </div>
-    </nav>
+    <div class="container">
+        <header>
+            <div class="logo">Psic. Daniel Machuca</div>
+            <div class="cedula" style="font-size: 0.8rem; color: #999;">Cédula: 11041473</div>
+        </header>
+    </div>
 
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Transforma tu Mente,<br>Influye tu Mundo.</h1>
-            <p>Especialista en cambio comportamental adaptativo. Un enfoque científico y práctico para alinear tus acciones con tus valores.</p>
-            <a href="https://wa.me/525627110600" target="_blank" class="btn btn-whatsapp">
-                <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+    <section class="hero">
+        <div class="container">
+            <h1>Ciencia aplicada a tu bienestar.</h1>
+            <p>Especialista en cambio comportamental adaptativo. Un enfoque práctico para alinear tus acciones con tus metas reales.</p>
+            <a href="https://wa.me/525627110600?text=Hola%20Daniel,%20vi%20tu%20sitio%20web%20y%20me%20gustaría%20agendar%20una%20sesión%20por%20WhatsApp%20Video" class="btn-whatsapp">
+                Agendar por WhatsApp
             </a>
         </div>
-    </header>
+    </section>
 
-    <section id="enfoque">
-        <div class="section-title">
-            <h2>Enfoque</h2>
-        </div>
-        <div class="about-grid">
-            <div class="about-text">
-                <p><strong>El Cambio Conductual Adaptativo</strong> es un conjunto de estrategias diseñadas para quienes buscan que sus acciones diarias sean congruentes con sus metas a largo plazo.</p>
-                <p>A través de un modelo holístico determinamos aquellas situaciones puntuales que generan impulsos desadaptativos para intervenir estratégicamente en:</p>
-                <ul style="margin-left: 20px; margin-bottom: 20px;">
-                    <li>Balance individuo - contexto.</li>
-                    <li>Gestión de la atención y el desempeño.</li>
-                    <li>Construcción de nuevas valoraciones cognitivas.</li>
-                    <li>Condicionamiento de respuestas positivas.</li>
-                </ul>
-                <p>Ya sea por autocontrol o intervención externa, el objetivo es vencer las acciones desadaptativas momentáneas en favor de un bienestar duradero.</p>
+    <section class="focus-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mi Enfoque</h2>
+                <p>Mi metodología combina la calidez humana con estrategias de <strong>neurociencia aplicada</strong> desarrolladas en la Universidad de Duke. Entiende cómo funciona tu cerebro para diseñar cambios reales.</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <span class="icon">🎯</span>
+                    <h3>Recupera el control</h3>
+                    <p>Identifica impulsos automáticos y cámbialos por decisiones que te acerquen a tus metas.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <span class="icon">🌿</span>
+                    <h3>Adiós al estrés</h3>
+                    <p>Entrena tu mente para gestionar la saturación diaria sin llegar al agotamiento.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <span class="icon">🧠</span>
+                    <h3>Diálogo interno</h3>
+                    <p>Transforma los pensamientos negativos en una visión más realista y constructiva de ti mismo.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <span class="icon">🔄</span>
+                    <h3>Hábitos duraderos</h3>
+                    <p>Diseñamos estrategias prácticas para que tus acciones positivas se vuelvan automáticas.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="servicios" style="background-color: var(--light-bg);">
-        <div class="section-title">
+    <section class="pricing">
+        <div class="container">
             <h2>Consulta y Costos</h2>
-            <p>Sesiones de aproximadamente 45 minutos.</p>
-        </div>
-        <div class="pricing-container">
-            <div class="price-card">
-                <h3>Presencial</h3>
-                <p>Centro Armand</p>
-                <div class="price-value">$680</div>
-                <p>Ideal para perfeccionar las técnicas.</p>
+            <p>Sesiones de 45 minutos aprox. Elige la modalidad que mejor te funcione.</p>
+            
+            <div class="pricing-cards">
+                <div class="price-card">
+                    <h3>Presencial</h3>
+                    <p>Centro Armand, Insurgentes Sur</p>
+                    <div class="price">$680<span>/sesión</span></div>
+                    <p style="font-size: 0.8rem;">Ideal para perfeccionar técnicas en persona.</p>
+                </div>
+
+                <div class="price-card featured">
+                    <div class="featured-tag">MÁS SOLICITADA</div>
+                    <h3>Online</h3>
+                    <p>WhatsApp Video</p>
+                    <div class="price">$250<span>/sesión</span></div>
+                    <p style="font-size: 0.8rem;">Dinámica, privada y sin traslados.</p>
+                </div>
             </div>
-            <div class="price-card" style="border: 2px solid var(--accent);">
-                <h3>Sesión Online</h3>
-                <p>Whatsapp Video</p>
-                <div class="price-value">$250</div>
-                <p>Una alternativa dinámica y accesible.</p>
+            
+            <div style="margin-top: 40px;">
+                <a href="https://wa.me/525627110600?text=Hola%20Daniel,%20me%20interesa%20agendar%20una%20sesión." style="color: var(--accent); font-weight: 700; text-decoration: none;">
+                    Haz clic aquí para ver disponibilidad de horarios →
+                </a>
             </div>
         </div>
     </section>
-
-    <section id="contacto">
-        <div class="section-title">
-            <h2>Ubicación y Citas</h2>
-            <p>Atención únicamente con cita previa.</p>
-        </div>
-        <div class="contact-info">
-            <div class="info-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <p><strong>Dirección:</strong><br>Insurgentes Sur 1391 Piso 2, Estacionamiento disponible en Centro Armand.</p>
-            </div>
-            <div class="info-item">
-                <i class="fas fa-calendar-check"></i>
-                <p><strong>Citas:</strong><br>WhatsApp: 56 2711 0600</p>
-            </div>
-            <div class="info-item">
-                <i class="fas fa-clock"></i>
-                <p><strong>Horarios:</strong><br>A convenir según disponibilidad.</p>
-            </div>
-        </div>
-        <div style="margin-top: 40px; border-radius: 15px; overflow: hidden; height: 300px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-
-    
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2965.709517031388!2d-99.18271213361731!3d19.371213622863394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff8fec1367ef%3A0xcf52ce67e39e4442!2sCentro%20Armand!5e0!3m2!1sen!2smx!4v1773851380411!5m2!1sen!2smx" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>    </section>
 
     <footer>
-        <p>&copy; 2026 - Psicólogo Daniel Machuca. Cédula Profesional: 11041473 ULA.  E-Mail: m38web@gmail.com  Todos los derechos reservados.</p>
+        <div class="container">
+            <p>Insurgentes Sur 1391 Piso 2, CDMX (Centro Armand)</p>
+            <p>WhatsApp: 56 2711 0600 | m38web@gmail.com</p>
+            <p style="margin-top: 20px; opacity: 0.6;">&copy; 2026 - Psicólogo Daniel Machuca. Todos los derechos reservados.</p>
+        </div>
     </footer>
 
 </body>
 </html>
+
